@@ -10,7 +10,7 @@ class Horoscope extends Model {
     protected $fillable = [
         'title',
         'content',
-        'author',
+        'author_id',
         'image_path'
     ];
 

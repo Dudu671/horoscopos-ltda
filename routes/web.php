@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers;
+use App\Http\Controllers\HoroscopeController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -17,12 +19,12 @@ Route::get('/', function () {
     return view('home');
 });
 
-Route::get('/horoscopes', function () {
-    return view('horoscopes');
-});
+Route::get('/horoscopes', [HoroscopeController::class, 'index'])->name('horoscopes.index');
+Route::get('/horoscopes/new', [HoroscopeController::class, 'newForm'])->name('horoscopes.new')->middleware('auth');
+Route::post('/horoscopes/new', [HoroscopeController::class, 'new'])->name('horoscopes.new')->middleware('auth');
 
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth'])->name('dashboard');
 
-require __DIR__.'/auth.php';
+require __DIR__ . '/auth.php';

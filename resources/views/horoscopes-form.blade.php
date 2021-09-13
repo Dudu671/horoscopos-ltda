@@ -1,8 +1,6 @@
 <?php
 
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Storage;
-
 ?>
 
 <!DOCTYPE html>
@@ -65,22 +63,35 @@ use Illuminate\Support\Facades\Storage;
         </nav>
 
         <div class="container-fluid main gap-2 p-3 d-flex flex-wrap justify-content-center">
-            @foreach($horoscopes as $horoscope)
-            <div class="card col-12" style="width: 18rem;">
-                <div class="card-header">
-                    {{$horoscope->title}}
+            <form class="col-10" action="{{route('horoscopes.new')}}" method="POST" enctype="multipart/form-data">
+                @csrf
+                <div class="mb-3">
+                    <label for="inputTitle" class="form-label">Título</label>
+                    <input type="text" class="form-control" id="inputTitle" name="title">
                 </div>
 
-                <img src="{{asset('/storage/'.$horoscope->image_path)}}" class="card-img-top" alt="...">
-                <div class="card-body">
-                    <p class="card-content"><?php echo nl2br($horoscope->content); ?></p>
-                    <p><strong>Autor:</strong> {{$horoscope->author}}</p>
-                    <p><strong>Data de publicação:</strong> <?php echo date('d/m/Y - H:i T', strtotime($horoscope->created_at)); ?></p>
+                <div class="mb-3">
+                    <label for="formFile" class="form-label">Imagem da postagem</label>
+                    <input class="form-control" type="file" id="formFile" name="image">
                 </div>
 
-                <a href="#" class="btn btn-primary m-1">Go somewhere</a>
-            </div>
-            @endforeach
+                <div class="form-floating">
+                    <textarea class="form-control" id="floatingTextarea2" name="content" style="height: 100px"></textarea>
+                    <label for="floatingTextarea2">Conteúdo da sua postagem...</label>
+                </div><br />
+
+                <button type="submit" class="btn btn-primary">Publicar</button>
+
+                @if ($errors->any())
+                <div class="alert alert-danger mt-3">
+                    <ul>
+                        @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+                @endif
+            </form>
         </div>
 
     </div>

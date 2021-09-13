@@ -17,7 +17,7 @@ class CreateHoroscopesTable extends Migration
             $table->id();
             $table->string('title', 255);
             $table->text('content', 65000);
-            $table->string('author', 100);
+            $table->integer('author_id');
             $table->string('image_path', 255);
             $table->timestamps();
         });

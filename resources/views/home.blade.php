@@ -18,7 +18,7 @@ use Illuminate\Support\Facades\Auth;
 <body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container-fluid">
-            <img src="{{asset('assets/logo.png')}}" alt="Logo" class="logo ms-2 me-2" />
+            <a href="/"><img src="{{asset('assets/logo.png')}}" alt="Logo" class="logo ms-2 me-2" /></a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -45,6 +45,7 @@ use Illuminate\Support\Facades\Auth;
                                 <?php echo Auth::user()->name ?>
                             </a>
                             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <li><a class="dropdown-item" href="{{route('horoscopes.new')}}">Nova postagem</a></li>
                                 <li><button class="dropdown-item" type="submit">Sair</button></li>
                             </ul>
                         </li>
