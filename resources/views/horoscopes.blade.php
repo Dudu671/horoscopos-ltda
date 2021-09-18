@@ -14,6 +14,7 @@ use Illuminate\Support\Facades\Storage;
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{{ URL::asset('css/main.css') }} ">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
     <title>Horóscopos</title>
 </head>
 
@@ -64,7 +65,7 @@ use Illuminate\Support\Facades\Storage;
             </div>
         </nav>
 
-        <div class="container-fluid main gap-2 p-3 d-flex flex-wrap justify-content-center">
+        <div class="container-fluid main gap-3 p-3 d-flex flex-wrap justify-content-center">
             @foreach($horoscopes as $horoscope)
             <div class="card col-12" style="width: 18rem;">
                 <div class="card-header">
@@ -78,7 +79,14 @@ use Illuminate\Support\Facades\Storage;
                     <p><strong>Data de publicação:</strong> <?php echo date('d/m/Y - H:i T', strtotime($horoscope->created_at)); ?></p>
                 </div>
 
-                <a href="#" class="btn btn-primary m-1">Go somewhere</a>
+                <hr />
+                <p class="likes-info fs-6 lh-1 m-0">100 likes</p>
+                <hr />
+
+                <div class="buttons-container mb-3 d-flex justify-content-around">
+                    <a href="" class="btn btn-primary btn-sm"><i class="bi-hand-thumbs-up"></i> Like</a>
+                    <a href="" class="btn btn-primary btn-sm">Ver mais</a>
+                </div>
             </div>
             @endforeach
         </div>

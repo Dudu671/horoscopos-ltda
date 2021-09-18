@@ -4,6 +4,10 @@
     cursor: pointer;
 }
 
+.card {
+    box-shadow: 3px 5px 5px rgb(207, 207, 207);
+}
+
 .card-img-top {
     align-self: center;
     padding: 5px;
@@ -16,4 +20,13 @@
     -webkit-line-clamp: 3;
     -webkit-box-orient: vertical;
     overflow: hidden;
+}
+
+.likes-info {
+    color: gray;
+    text-align: center;
+}
+
+.buttons-container .btn {
+    width: 120px;
 }
